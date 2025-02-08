@@ -1,0 +1,45 @@
+Grid grid;
+Trunk trunk;
+Tile captured;
+
+void setup() {
+  size(640, 960);
+  colorMode(HSB, 360, 1, 1);
+
+  grid = new Grid(GRID_SIZE, GRID_SIZE);
+  trunk = new Trunk();
+}
+
+void draw() {
+  background(BACKGROUND_HUE, BACKGROUND_SATURATION, BACKGROUND_BRIGHTNESS);
+
+  textAlign(CENTER, CENTER);
+  textSize(100);
+  text(0, width / 2, 50, 100);
+
+  grid.draw();
+  trunk.draw();
+  drawCaptured();
+}
+
+void mousePressed() {
+  if (captured != null) {
+    trunk.replace(captured);
+    captured = null;
+  }
+  
+  captured = trunk.getIntersect(mouseX, mouseY);
+}
+
+void mouseReleased() {
+  if (captured != null) {
+    trunk.replace(captured);
+    captured = null;
+  }
+}
+
+void drawCaptured() {
+  if (captured == null) return;
+  
+  captured.draw(mouseX, mouseY, 200, false);
+}
