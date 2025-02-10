@@ -4,7 +4,7 @@ Tile captured;
 
 void setup() {
   size(640, 960);
-  colorMode(HSB, 360, 1, 1);
+  colorMode(HSB, 360, 1, 1, 1);
 
   grid = new Grid(GRID_SIZE, GRID_SIZE);
   trunk = new Trunk();
@@ -17,9 +17,12 @@ void draw() {
   textSize(100);
   text(0, width / 2, 50, 100);
 
+  boolean gridHovered = grid.hover(mouseX, mouseY);
+  grid.checkTile(captured);
+
   grid.draw();
   trunk.draw();
-  drawCaptured();
+  if (!gridHovered) drawCaptured();
 }
 
 void mousePressed() {
@@ -27,7 +30,7 @@ void mousePressed() {
     trunk.replace(captured);
     captured = null;
   }
-  
+
   captured = trunk.getIntersect(mouseX, mouseY);
 }
 
@@ -40,6 +43,6 @@ void mouseReleased() {
 
 void drawCaptured() {
   if (captured == null) return;
-  
+
   captured.draw(mouseX, mouseY, 200, false);
 }
