@@ -50,4 +50,20 @@ class Tile {
       }
     }
   }
+  
+  public int getHue() {
+    return hue;
+  }
+  
+  public int getRows() {
+    return rows;
+  }
+  
+  public int getColumns() {
+    return columns;
+  }
+  
+  public Block getBlock(int x, int y) {
+    return blocks[y][x];
+  }
 }
