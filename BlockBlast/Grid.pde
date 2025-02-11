@@ -73,6 +73,7 @@ class Grid {
     if (x < screenX || x > getScreenEnd() || y < screenY || y > getScreenBottom()) {
       hoveredX = -1;
       hoveredY = -1;
+      tilePlacementValid = false;
       return false;
     }
 
@@ -94,7 +95,6 @@ class Grid {
         if (tile.getBlock(j, i) == null) continue;
         int targetX = originX + j;
         int targetY = originY + i;
-
 
         int index = targetY * rows + targetX;
 

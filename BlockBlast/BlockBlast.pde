@@ -36,16 +36,17 @@ void mousePressed() {
 
 void mouseReleased() {
   if (captured != null) {
-    boolean placed = grid.placeTile(captured);
-    if (placed) {
-      // TODO
-      // trunk.replace(captured);
-      println(trunk.getLength());
-      if (trunk.getLength() == 0) trunk.restock();
-    } else {
-      trunk.replace(captured);
-    }
+    Tile tileToProcess = captured;
     captured = null;
+    boolean placed = grid.placeTile(tileToProcess);
+
+    if (!placed) {
+      trunk.replace(tileToProcess);
+      return;
+    }
+    
+    if (trunk.getLength() == 0) trunk.restock();
+    
   }
 }
 

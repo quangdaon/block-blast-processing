@@ -20,6 +20,8 @@ class Trunk {
 
   private int screenX, screenY, screenWidth, screenHeight;
 
+  private int lastPicked = -1;
+
   private int getScreenEnd() {
     return screenX + screenWidth;
   }
@@ -60,24 +62,21 @@ class Trunk {
     int index = floor((x - screenX) / float(screenWidth) * options.length);
     Tile found = options[index];
 
+    lastPicked = index;
     options[index] = null;
 
     return found;
   }
 
   public void replace(Tile tile) {
-    for (int i = 0; i < options.length; i++) {
-      if (options[i] != null) continue;
-      options[i] = tile;
-      return;
-    }
-
-    println("Tried to replace full Trunk");
+    if (lastPicked == -1) return;
+    options[lastPicked] = tile;
+    lastPicked = -1;
   }
 
   public void restock() {
-    for(int i = 0; i < options.length; i++) {
-      if(options[i] == null) options[i] = getRandomCandidate();
+    for (int i = 0; i < options.length; i++) {
+      if (options[i] == null) options[i] = getRandomCandidate();
     }
   }
 
@@ -90,11 +89,11 @@ class Trunk {
 
     return count;
   }
-  
+
   private Tile getRandomCandidate() {
     Tile candidate = candidates[floor(random(candidates.length))];
-      
-    
+
+
     return candidate;
   }
 }
