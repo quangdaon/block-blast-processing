@@ -1,5 +1,5 @@
 class Trunk {
-  Tile[] candidates = new Tile [] {
+  private Tile[] candidates = new Tile [] {
     new Tile(60, new int[][] {
       new int[] { 1 }
     }),
@@ -12,7 +12,7 @@ class Trunk {
     })
   };
 
-  Tile[] options = candidates; // new Tile[3];
+  private Tile[] options = new Tile[3];
 
   private int screenX, screenY, screenWidth, screenHeight;
 
@@ -25,6 +25,7 @@ class Trunk {
   }
 
   public Trunk() {
+    restock();
     initScreenDimensions();
   }
 
@@ -54,19 +55,42 @@ class Trunk {
     if (x < screenX || x > getScreenEnd() || y < screenY || y > getScreenBottom()) return null;
     int index = floor((x - screenX) / float(screenWidth) * options.length);
     Tile found = options[index];
-    
+
     options[index] = null;
 
     return found;
   }
-  
+
   public void replace(Tile tile) {
     for (int i = 0; i < options.length; i++) {
       if (options[i] != null) continue;
       options[i] = tile;
       return;
     }
-    
+
     println("Tried to replace full Trunk");
+  }
+
+  public void restock() {
+    for(int i = 0; i < options.length; i++) {
+      if(options[i] == null) options[i] = getRandomCandidate();
+    }
+  }
+
+  public int getLength() {
+    int count = 0;
+
+    for (Tile opt : options) {
+      if (opt != null) count++;
+    }
+
+    return count;
+  }
+  
+  private Tile getRandomCandidate() {
+    Tile candidate = candidates[floor(random(candidates.length))];
+      
+    
+    return candidate;
   }
 }

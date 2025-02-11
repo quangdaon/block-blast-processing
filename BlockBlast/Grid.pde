@@ -76,6 +76,30 @@ class Grid {
     return true;
   }
 
+  public boolean placeTile(Tile tile) {
+    if (!tilePlacementValid) return false;
+    int originX = hoveredX;
+    int originY = hoveredY;
+
+    for (int i = 0; i < tileToCheck.getRows(); i++) {
+      for (int j = 0; j < tileToCheck.getColumns(); j++) {
+        if (tileToCheck.getBlock(j, i) == null) continue;
+        int targetX = originX + j;
+        int targetY = originY + i;
+
+
+        int index = targetY * rows + targetX;
+
+        var block = blocks[index];
+
+        block.active = true;
+        block.hue = tileToCheck.getHue();
+      }
+    }
+
+    return true;
+  }
+
   public void draw() {
     push();
     noStroke();
@@ -97,26 +121,26 @@ class Grid {
   private color getTileColor(int col, int row, int index) {
     if (tileToCheck != null) {
       if (!isTiledBlock(col, row)) return -1;
-      return tilePlacementValid 
+      return tilePlacementValid
         ? color(tileToCheck.getHue(), BLOCK_SATURATION, BLOCK_BRIGHTNESS, 0.3)
         : color(0, 1, BLOCK_BRIGHTNESS, 1);
     }
-    
+
     if (getHoveredIndex() == index) return color(BACKGROUND_HUE, 0.1, 0, 0.15);
 
     return -1;
   }
-  
+
   private boolean isTiledBlock(int col, int row) {
     int tiledX = col - hoveredX;
     int tiledY = row - hoveredY;
-    
-    println("X: " + tiledX + "; Cols: "+ tileToCheck.getColumns() + "; Y: "+ tiledY + "; Rows: " + tileToCheck.getRows());
-    
+
+    // println("X: " + tiledX + "; Cols: "+ tileToCheck.getColumns() + "; Y: "+ tiledY + "; Rows: " + tileToCheck.getRows());
+
     if (tiledX < 0 || tiledX >= tileToCheck.getColumns() || tiledY < 0 || tiledY >= tileToCheck.getRows()) return false;
-    
+
     Block block = tileToCheck.getBlock(tiledX, tiledY);
-    
+
     return block != null;
   }
 

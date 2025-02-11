@@ -18,10 +18,10 @@ class Block {
   public void draw(int x, int y, int w, color overrideColor) {
     push();
     stroke(BACKGROUND_HUE, BACKGROUND_SATURATION, 0.15);
-    if (overrideColor != -1) {
-      fill(overrideColor);
-    } else if(active) {
+    if(active) {
       fill(hue, BLOCK_SATURATION, BLOCK_BRIGHTNESS);
+    } else if (overrideColor != -1) {
+      fill(overrideColor);
     } else {
       noFill();
     }

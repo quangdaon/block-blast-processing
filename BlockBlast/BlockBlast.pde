@@ -36,7 +36,15 @@ void mousePressed() {
 
 void mouseReleased() {
   if (captured != null) {
-    trunk.replace(captured);
+    boolean placed = grid.placeTile(captured);
+    if (placed) {
+      // TODO
+      // trunk.replace(captured);
+      println(trunk.getLength());
+      if (trunk.getLength() == 0) trunk.restock();
+    } else {
+      trunk.replace(captured);
+    }
     captured = null;
   }
 }
