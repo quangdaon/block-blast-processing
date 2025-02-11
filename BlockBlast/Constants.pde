@@ -7,7 +7,7 @@ final float BACKGROUND_HUE = 250;
 final float BACKGROUND_SATURATION = 0.7;
 final float BACKGROUND_BRIGHTNESS = 0.3;
 
-final float BLOCK_SATURATION = 0.6;
-final float BLOCK_BRIGHTNESS = 0.8;
+final float BLOCK_SATURATION = 0.4;
+final float BLOCK_BRIGHTNESS = 0.9;
 
 final float TRUNK_ASPECT_RATIO = 1.0 / 3.0;
