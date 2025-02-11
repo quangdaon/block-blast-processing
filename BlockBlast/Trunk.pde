@@ -3,8 +3,14 @@ class Trunk {
     new Tile(60, new int[][] {
       new int[] { 1 }
     }),
-    new Tile(120, new int[][] {
+    new Tile(180, new int[][] {
       new int[] { 1, 1 }
+    }),
+    new Tile(240, new int[][] {
+      new int[] { 1, 1, 1 }
+    }),
+    new Tile(300, new int[][] {
+      new int[] { 1, 1, 1, 1 }
     }),
     new Tile(260, new int[][] {
       new int[] { 1 },
@@ -15,25 +21,91 @@ class Trunk {
       new int[] { 1 },
       new int[] { 1 }
     }),
+    new Tile(300, new int[][] {
+      new int[] { 1 },
+      new int[] { 1 },
+      new int[] { 1 },
+      new int[] { 1 }
+    }),
     new Tile(180, new int[][] {
       new int[] { 1, 1, 1, 1 },
       new int[] { 1, 0, 0, 0 }
-    }),
-    new Tile(300, new int[][] {
-      new int[] { 1, 1, 1 },
-      new int[] { 1, 0, 0 }
     }),
     new Tile(320, new int[][] {
       new int[] { 1, 0, 0, 0 },
       new int[] { 1, 1, 1, 1 }
     }),
+    new Tile(180, new int[][] {
+      new int[] { 1, 1, 1, 1 },
+      new int[] { 0, 0, 0, 1 }
+    }),
+    new Tile(320, new int[][] {
+      new int[] { 0, 0, 0, 1 },
+      new int[] { 1, 1, 1, 1 }
+    }),
+    new Tile(180, new int[][] {
+      new int[] { 1, 1 },
+      new int[] { 0, 1 },
+      new int[] { 0, 1 },
+      new int[] { 0, 1 }
+    }),
+    new Tile(180, new int[][] {
+      new int[] { 0, 1 },
+      new int[] { 0, 1 },
+      new int[] { 0, 1 },
+      new int[] { 1, 1 }
+    }),
+    new Tile(180, new int[][] {
+      new int[] { 1, 1 },
+      new int[] { 1, 0 },
+      new int[] { 1, 0 },
+      new int[] { 1, 0 }
+    }),
+    new Tile(180, new int[][] {
+      new int[] { 1, 0 },
+      new int[] { 1, 0 },
+      new int[] { 1, 0 },
+      new int[] { 1, 1 }
+    }),
+    new Tile(300, new int[][] {
+      new int[] { 1, 1, 1 },
+      new int[] { 1, 0, 0 }
+    }),
     new Tile(200, new int[][] {
       new int[] { 1, 0, 0 },
+      new int[] { 1, 1, 1 }
+    }),
+    new Tile(300, new int[][] {
+      new int[] { 1, 1, 1 },
+      new int[] { 0, 0, 1 }
+    }),
+    new Tile(200, new int[][] {
+      new int[] { 0, 0, 1 },
       new int[] { 1, 1, 1 }
     }),
     new Tile(0, new int[][] {
       new int[] { 1, 1, 1 },
       new int[] { 1, 1, 1 }
+    }),
+    new Tile(20, new int[][] {
+      new int[] { 1, 1 },
+      new int[] { 1, 0 },
+      new int[] { 1, 0 }
+    }),
+    new Tile(20, new int[][] {
+      new int[] { 1, 0 },
+      new int[] { 1, 0 },
+      new int[] { 1, 1 }
+    }),
+    new Tile(20, new int[][] {
+      new int[] { 1, 1 },
+      new int[] { 0, 1 },
+      new int[] { 0, 1 }
+    }),
+    new Tile(20, new int[][] {
+      new int[] { 0, 1 },
+      new int[] { 0, 1 },
+      new int[] { 1, 1 }
     }),
     new Tile(20, new int[][] {
       new int[] { 1, 1 },
@@ -61,9 +133,7 @@ class Trunk {
     })
   };
 
-  private Tile[] options = new Tile[] {
-    candidates[2],candidates[3],candidates[8]
-  };
+  private Tile[] options = new Tile[3];
 
   private int screenX, screenY, screenWidth, screenHeight;
 

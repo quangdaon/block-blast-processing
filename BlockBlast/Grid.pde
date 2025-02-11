@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class Grid {
   public int columns, rows;
   public Block[] blocks;
@@ -45,24 +47,24 @@ class Grid {
     }
 
     tileToCheck = tile;
-    tilePlacementValid = checkTile();
+    tilePlacementValid = checkTile(tile, hoveredX, hoveredY);
 
     return tilePlacementValid;
   }
 
-  private boolean checkTile() {
-    if (hoveredX + tileToCheck.getColumns() > columns) return false;
-    if (hoveredY + tileToCheck.getRows() > rows) return false;
+  private boolean checkTile(Tile tile, int x, int y) {
+    if (x + tile.getColumns() > columns) return false;
+    if (y + tile.getRows() > rows) return false;
 
-    for (int i = 0; i < tileToCheck.getRows(); i++) {
-      for (int j = 0; j < tileToCheck.getColumns(); j++) {
-        int targetX = hoveredX + j;
-        int targetY = hoveredY + i;
+    for (int i = 0; i < tile.getRows(); i++) {
+      for (int j = 0; j < tile.getColumns(); j++) {
+        int targetX = x + j;
+        int targetY = y + i;
 
 
         int index = targetY * rows + targetX;
 
-        if (tileToCheck.getBlock(j ,i) != null && blocks[index].active) return false;
+        if (tile.getBlock(j ,i) != null && blocks[index].active) return false;
       }
     }
 
@@ -126,6 +128,16 @@ class Grid {
         blocks[index].draw(blockX, blockY, blockWidth, overrideColor);
       }
     }
+  }
+  
+  public void scan() {
+    boolean[] rowsFilled = new boolean[rows];
+    boolean[] columnsFilled = new boolean[columns];
+    
+    Arrays.fill(rowsFilled, true);
+    Arrays.fill(columnsFilled, true);
+    
+  
   }
 
   public int getScore() {
