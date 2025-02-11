@@ -15,7 +15,7 @@ void draw() {
 
   textAlign(CENTER, CENTER);
   textSize(100);
-  text(0, width / 2, 50, 100);
+  text(grid.getScore(), width / 2, 50, 100);
 
   boolean gridHovered = grid.hover(mouseX, mouseY);
   grid.checkTile(captured);

@@ -2,6 +2,8 @@ class Grid {
   public int columns, rows;
   public Block[] blocks;
 
+  private int score = 0;
+
   private int hoveredX = -1;
   private int hoveredY = -1;
   private boolean tilePlacementValid = false;
@@ -54,7 +56,13 @@ class Grid {
 
     for (int i = 0; i < tileToCheck.getRows(); i++) {
       for (int j = 0; j < tileToCheck.getColumns(); j++) {
-        // TODO
+        int targetX = hoveredX + j;
+        int targetY = hoveredY + i;
+
+
+        int index = targetY * rows + targetX;
+
+        if (tileToCheck.getBlock(j ,i) != null && blocks[index].active) return false;
       }
     }
 
@@ -81,9 +89,9 @@ class Grid {
     int originX = hoveredX;
     int originY = hoveredY;
 
-    for (int i = 0; i < tileToCheck.getRows(); i++) {
-      for (int j = 0; j < tileToCheck.getColumns(); j++) {
-        if (tileToCheck.getBlock(j, i) == null) continue;
+    for (int i = 0; i < tile.getRows(); i++) {
+      for (int j = 0; j < tile.getColumns(); j++) {
+        if (tile.getBlock(j, i) == null) continue;
         int targetX = originX + j;
         int targetY = originY + i;
 
@@ -96,6 +104,8 @@ class Grid {
         block.hue = tileToCheck.getHue();
       }
     }
+
+    score+= tile.getSize();
 
     return true;
   }
@@ -118,6 +128,10 @@ class Grid {
     }
   }
 
+  public int getScore() {
+    return score;
+  }
+
   private color getTileColor(int col, int row, int index) {
     if (tileToCheck != null) {
       if (!isTiledBlock(col, row)) return -1;
@@ -126,7 +140,7 @@ class Grid {
         : color(0, 1, BLOCK_BRIGHTNESS, 1);
     }
 
-    if (getHoveredIndex() == index) return color(BACKGROUND_HUE, 0.1, 0, 0.15);
+    if (getHoveredIndex() == index && !blocks[index].active) return color(BACKGROUND_HUE, 0.1, 0, 0.15);
 
     return -1;
   }

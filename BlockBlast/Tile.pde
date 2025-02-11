@@ -5,6 +5,7 @@ class Tile {
 
   private int columns = 0;
   private int rows;
+  private int size;
 
   public Tile(int h, int[][] bp) {
     hue = h;
@@ -17,6 +18,7 @@ class Tile {
       if (bp[i].length > columns) columns = bp[i].length;
       for (int j = 0; j < bp[i].length; j++) {
         if (blueprint[i][j] == 0) continue;
+        size++;
         Block block = new Block(hue);
         block.active = true;
         blocks[i][j] = block;
@@ -65,5 +67,9 @@ class Tile {
   
   public Block getBlock(int x, int y) {
     return blocks[y][x];
+  }
+  
+  public int getSize() {
+    return size;
   }
 }

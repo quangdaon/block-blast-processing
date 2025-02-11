@@ -9,6 +9,10 @@ class Trunk {
     new Tile(180, new int[][] {
       new int[] { 1, 1, 1, 1 },
       new int[] { 1, 0, 0, 0 }
+    }),
+    new Tile(320, new int[][] {
+      new int[] { 1, 0, 0, 0 },
+      new int[] { 1, 1, 1, 1 }
     })
   };
 
