@@ -64,7 +64,7 @@ class Grid {
 
         int index = targetY * rows + targetX;
 
-        if (tile.getBlock(j ,i) != null && blocks[index].active) return false;
+        if (tile.getBlock(j, i) != null && blocks[index].active) return false;
       }
     }
 
@@ -129,15 +129,54 @@ class Grid {
       }
     }
   }
-  
-  public void scan() {
+
+  public boolean scan(Tile[] trunkTiles) {
     boolean[] rowsFilled = new boolean[rows];
     boolean[] columnsFilled = new boolean[columns];
-    
+    boolean hasValidMove = false;
+
     Arrays.fill(rowsFilled, true);
     Arrays.fill(columnsFilled, true);
+
+    for (int row = 0; row < rows; row++) {
+      for (int col = 0; col < columns; col++) {
+        int index = row * rows + col;
+        if (blocks[index].active) continue;
+
+        rowsFilled[row] = false;
+        columnsFilled[col] = false;
+
+        if (hasValidMove) continue;
+
+        for (Tile tile : trunkTiles) {
+          if (tile == null || !checkTile(tile, col, row)) continue;
+          hasValidMove = true;
+          break;
+        }
+      }
+    }
+
+
+    int[] filledRows = getTrueIndexes(rowsFilled);
+    int[] filledCols = getTrueIndexes(columnsFilled);
+
+    for (int row : filledRows) {
+      for (int col = 0; col < columns; col++) {
+        int index = row * rows + col;
+        blocks[index].active = false;
+      }
+    }
+
+    for (int col : filledCols) {
+      for (int row = 0; row < rows; row++) {
+        int index = row * rows + col;
+        blocks[index].active = false;
+      }
+    }
+
+    if (filledRows.length > 0 || filledCols.length > 0) return scan(trunkTiles);    
     
-  
+    return hasValidMove;
   }
 
   public int getScore() {

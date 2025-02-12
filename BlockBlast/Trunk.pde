@@ -1,22 +1,22 @@
 class Trunk {
   private Tile[] candidates = new Tile [] {
-    new Tile(60, new int[][] {
+    new Tile(0, new int[][] {
       new int[] { 1 }
     }),
-    new Tile(180, new int[][] {
+    new Tile(20, new int[][] {
       new int[] { 1, 1 }
     }),
-    new Tile(240, new int[][] {
+    new Tile(340, new int[][] {
       new int[] { 1, 1, 1 }
     }),
-    new Tile(300, new int[][] {
+    new Tile(40, new int[][] {
       new int[] { 1, 1, 1, 1 }
     }),
-    new Tile(260, new int[][] {
+    new Tile(320, new int[][] {
       new int[] { 1 },
       new int[] { 1 }
     }),
-    new Tile(360, new int[][] {
+    new Tile(60, new int[][] {
       new int[] { 1 },
       new int[] { 1 },
       new int[] { 1 }
@@ -27,47 +27,47 @@ class Trunk {
       new int[] { 1 },
       new int[] { 1 }
     }),
-    new Tile(180, new int[][] {
+    new Tile(80, new int[][] {
       new int[] { 1, 1, 1, 1 },
       new int[] { 1, 0, 0, 0 }
     }),
-    new Tile(320, new int[][] {
+    new Tile(280, new int[][] {
       new int[] { 1, 0, 0, 0 },
       new int[] { 1, 1, 1, 1 }
     }),
-    new Tile(180, new int[][] {
+    new Tile(100, new int[][] {
       new int[] { 1, 1, 1, 1 },
       new int[] { 0, 0, 0, 1 }
     }),
-    new Tile(320, new int[][] {
+    new Tile(260, new int[][] {
       new int[] { 0, 0, 0, 1 },
       new int[] { 1, 1, 1, 1 }
     }),
-    new Tile(180, new int[][] {
+    new Tile(120, new int[][] {
       new int[] { 1, 1 },
       new int[] { 0, 1 },
       new int[] { 0, 1 },
       new int[] { 0, 1 }
     }),
-    new Tile(180, new int[][] {
+    new Tile(240, new int[][] {
       new int[] { 0, 1 },
       new int[] { 0, 1 },
       new int[] { 0, 1 },
       new int[] { 1, 1 }
     }),
-    new Tile(180, new int[][] {
+    new Tile(140, new int[][] {
       new int[] { 1, 1 },
       new int[] { 1, 0 },
       new int[] { 1, 0 },
       new int[] { 1, 0 }
     }),
-    new Tile(180, new int[][] {
+    new Tile(220, new int[][] {
       new int[] { 1, 0 },
       new int[] { 1, 0 },
       new int[] { 1, 0 },
       new int[] { 1, 1 }
     }),
-    new Tile(300, new int[][] {
+    new Tile(160, new int[][] {
       new int[] { 1, 1, 1 },
       new int[] { 1, 0, 0 }
     }),
@@ -75,7 +75,7 @@ class Trunk {
       new int[] { 1, 0, 0 },
       new int[] { 1, 1, 1 }
     }),
-    new Tile(300, new int[][] {
+    new Tile(180, new int[][] {
       new int[] { 1, 1, 1 },
       new int[] { 0, 0, 1 }
     }),
@@ -83,47 +83,47 @@ class Trunk {
       new int[] { 0, 0, 1 },
       new int[] { 1, 1, 1 }
     }),
-    new Tile(0, new int[][] {
+    new Tile(160, new int[][] {
       new int[] { 1, 1, 1 },
       new int[] { 1, 1, 1 }
     }),
-    new Tile(20, new int[][] {
+    new Tile(220, new int[][] {
       new int[] { 1, 1 },
       new int[] { 1, 0 },
       new int[] { 1, 0 }
     }),
-    new Tile(20, new int[][] {
+    new Tile(140, new int[][] {
       new int[] { 1, 0 },
       new int[] { 1, 0 },
       new int[] { 1, 1 }
     }),
-    new Tile(20, new int[][] {
+    new Tile(240, new int[][] {
       new int[] { 1, 1 },
       new int[] { 0, 1 },
       new int[] { 0, 1 }
     }),
-    new Tile(20, new int[][] {
+    new Tile(120, new int[][] {
       new int[] { 0, 1 },
       new int[] { 0, 1 },
       new int[] { 1, 1 }
     }),
-    new Tile(20, new int[][] {
+    new Tile(260, new int[][] {
       new int[] { 1, 1 },
       new int[] { 1, 1 },
       new int[] { 1, 1 }
     }),
-    new Tile(40, new int[][] {
+    new Tile(100, new int[][] {
       new int[] { 0, 1, 0 },
       new int[] { 1, 1, 1 }
     }),
-    new Tile(340, new int[][] {
+    new Tile(280, new int[][] {
       new int[] { 1, 1, 1 },
       new int[] { 0, 1, 0 }
     }),
-    new Tile(280, new int[][] {
+    new Tile(80, new int[][] {
       new int[] { 1, 1, 1, 1, 1, 1 }
     }),
-    new Tile(140, new int[][] {
+    new Tile(300, new int[][] {
       new int[] { 1 },
       new int[] { 1 },
       new int[] { 1 },
@@ -212,5 +212,9 @@ class Trunk {
 
 
     return candidate;
+  }
+  
+  public Tile[] getOptions() {
+    return options;
   }
 }

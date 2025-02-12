@@ -1,6 +1,7 @@
 Grid grid;
 Trunk trunk;
 Tile captured;
+boolean gameOver = false;
 
 void setup() {
   size(640, 960);
@@ -13,9 +14,7 @@ void setup() {
 void draw() {
   background(BACKGROUND_HUE, BACKGROUND_SATURATION, BACKGROUND_BRIGHTNESS);
 
-  textAlign(CENTER, CENTER);
-  textSize(100);
-  text(grid.getScore(), width / 2, 50);
+  renderMessage();
 
   boolean gridHovered = grid.hover(mouseX, mouseY);
   grid.checkTile(captured);
@@ -44,9 +43,9 @@ void mouseReleased() {
       trunk.replace(tileToProcess);
       return;
     }
-    
+
     if (trunk.getLength() == 0) trunk.restock();
-    
+    gameOver = !grid.scan(trunk.getOptions());
   }
 }
 
@@ -54,4 +53,23 @@ void drawCaptured() {
   if (captured == null) return;
 
   captured.draw(mouseX, mouseY, 200, false);
+}
+
+void renderMessage() {
+  int score = grid.getScore();
+
+  textAlign(CENTER, CENTER);
+  
+  if (!gameOver) {
+    textSize(100);
+    text(score, width / 2, 50);
+    return;
+  }
+
+
+  textSize(40);
+  text("Out of Moves!", width / 2, 40);
+
+  textSize(20);
+  text("Final Score: " + score, width / 2, 80);
 }
